@@ -4,8 +4,13 @@ import requests
 # URL da imagem
 image_url = "https://thispersondoesnotexist.com/"
 
-# Especificando o caminho completo do diretório de destino
-pasta_destino = r"C:\Users\allan\OneDrive\Imagens\fotos fakes"
+# Obtendo o diretório padrão de imagens do sistema operacional
+pasta_destino = os.path.join(os.path.expanduser('~'), 'Downloads')
+print("Caminho da pasta onde vai ficar salvas as fotos fakes:",pasta_destino)
+# Verificando se o diretório existe e, se não, criando-o
+if not os.path.exists(pasta_destino):
+    os.makedirs(pasta_destino)
+    
 
 while True:
     fim = input("Digite quantas fotos você vai querer: ")
@@ -47,4 +52,3 @@ while True:
     if contador_foto > quantidade_fotos:
         print(f"Foram baixadas {quantidade_fotos} fotos.")
         break
-
